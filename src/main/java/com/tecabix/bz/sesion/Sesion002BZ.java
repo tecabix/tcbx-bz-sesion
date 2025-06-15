@@ -18,15 +18,39 @@ import com.tecabix.sv.rq.RQSV026;
  */
 public class Sesion002BZ {
 
-	private SesionRepository sesionRepository;
-	
-	private String EL_TIPO_DE_FILTRO_NO_ES_VALIDO = "El tipo de filtro no es válido.";
+    /**
+     * Repositorio para acceder a la entidad Sesion.
+     */
+    private final SesionRepository sesionRepository;
 
-    public Sesion002BZ(SesionRepository sesionRepository) {
-		this.sesionRepository = sesionRepository;
-	}
+    /**
+     * Mensaje filtro no válido.
+     */
+    private static final String EL_TIPO_DE_FILTRO_NO_ES_VALIDO;
 
-	public ResponseEntity<RSB018> buscar(final RQSV026 rqsv026) {
+    static {
+        EL_TIPO_DE_FILTRO_NO_ES_VALIDO = "El tipo de filtro no es válido.";
+    }
+
+    /**
+     * Constructor que inicializa la clase {@code Sesion002BZ} con el
+     * repositoriode sesiones.
+     *
+     * @param repository Repositorio utilizado para acceder a l
+     *                         entidad {@code Sesion}.
+     */
+    public Sesion002BZ(final SesionRepository repository) {
+        this.sesionRepository = repository;
+    }
+
+    /**
+     * Método para crear una nueva sesión de usuario.
+     *
+     * @param rqsv026 datos de búsqueda
+     * @return {@link ResponseEntity} con un objeto {@link RSB019} que contiene
+     *         información para consultar la sesión del usuario.
+     */
+    public ResponseEntity<RSB018> buscar(final RQSV026 rqsv026) {
 
         RSB018 rsb018 = rqsv026.getRsb018();
         byte elementos = rqsv026.getElementos();
@@ -50,14 +74,14 @@ public class Sesion002BZ {
         Page<Sesion> servicio;
         servicio = sesionRepository.findByActiveAndLikeServicio(txt, pageable);
         switch (tipo) {
-            case "USUARIO":
-                return rsb018.ok(usuario);
-            case "LICENCIA":
-                return rsb018.ok(licencia);
-            case "SERVICIO":
-                return rsb018.ok(servicio);
-            default:
-                return rsb018.badRequest(EL_TIPO_DE_FILTRO_NO_ES_VALIDO);
+        case "USUARIO":
+            return rsb018.ok(usuario);
+        case "LICENCIA":
+            return rsb018.ok(licencia);
+        case "SERVICIO":
+            return rsb018.ok(servicio);
+        default:
+            return rsb018.badRequest(EL_TIPO_DE_FILTRO_NO_ES_VALIDO);
         }
     }
 }
