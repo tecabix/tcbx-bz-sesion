@@ -17,16 +17,37 @@ import com.tecabix.sv.rq.RQSV027;
  */
 public class Sesion003BZ {
 
-	private SesionRepository sesionRepository;
-	
-	private Catalogo eliminado;
+    /**
+     * Repositorio para acceder a la entidad Sesion.
+     */
+    private final SesionRepository sesionRepository;
 
-    public Sesion003BZ(Sesion003BzDTO dto) {
-		this.sesionRepository = dto.getSesionRepository();
-		this.eliminado = dto.getEliminado();
-	}
+    /**
+     * Estado "Eliminado" obtenido desde el catálogo.
+     */
+    private final Catalogo eliminado;
 
-	public ResponseEntity<RSB020> eliminar(final RQSV027 rqsv027) {
+    /**
+     * Construye una nueva instancia de {@code Sesion003BZ} utilizando los datos
+     * proporcionados en el objeto {@link Sesion003BzDTO}.
+     *
+     * @param dto el objeto {@link Sesion003BzDTO} que contiene el repositorio
+     *            de sesión y el indicador de eliminado para inicializar esta
+     *            instancia.
+     */
+    public Sesion003BZ(final Sesion003BzDTO dto) {
+        this.sesionRepository = dto.getSesionRepository();
+        this.eliminado = dto.getEliminado();
+    }
+
+    /**
+     * Método para eliminar una sesión de usuario.
+     *
+     * @param rqsv027 datos de eliminación
+     * @return {@link ResponseEntity} con un objeto {@link RSB020} que contiene
+     *         información para eliminar la sesión del usuario.
+     */
+    public ResponseEntity<RSB020> eliminar(final RQSV027 rqsv027) {
 
         RSB020 rsb020 = rqsv027.getRsb020();
         Sesion sesion = rqsv027.getSesion();

@@ -9,23 +9,50 @@ import com.tecabix.db.repository.SesionRepository;
  */
 public class Sesion004BzDTO {
 
+    /**
+     * Repositorio para acceder a la entidad Sesion.
+     */
     private SesionRepository sesionRepository;
-	
-	private Catalogo eliminado;
 
-	public SesionRepository getSesionRepository() {
-		return sesionRepository;
-	}
+    /**
+     * Estado "Eliminado" obtenido desde el catálogo.
+     */
+    private Catalogo eliminado;
 
-	public void setSesionRepository(SesionRepository sesionRepository) {
-		this.sesionRepository = sesionRepository;
-	}
+    /**
+     * Obtiene el repositorio de sesiones.
+     *
+     * @return el repositorio de sesiones.
+     */
+    public SesionRepository getSesionRepository() {
+        return sesionRepository;
+    }
 
-	public Catalogo getEliminado() {
-		return eliminado;
-	}
+    /**
+     * Establece el repositorio de sesiones.
+     *
+     * @param repository el repositorio de sesiones a establecer.
+     */
+    public void setSesionRepository(final SesionRepository repository) {
+        this.sesionRepository = repository;
+    }
 
-	public void setEliminado(Catalogo eliminado) {
-		this.eliminado = eliminado;
-	}
+    /**
+     * Obtiene el estado "Eliminado" del catálogo.
+     *
+     * @return el estado "Eliminado".
+     */
+    public Catalogo getEliminado() {
+        return eliminado;
+    }
+
+    /**
+     * Establece el estado "Eliminado" del catálogo.
+     *
+     * @param estatus el estado "Eliminado" a establecer.
+     */
+    public void setEliminado(final Catalogo estatus) {
+        this.eliminado = estatus;
+    }
+
 }
