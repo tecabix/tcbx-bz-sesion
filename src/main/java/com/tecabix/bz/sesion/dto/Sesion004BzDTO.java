@@ -54,5 +54,4 @@ public class Sesion004BzDTO {
     public void setEliminado(final Catalogo estatus) {
         this.eliminado = estatus;
     }
-
 }

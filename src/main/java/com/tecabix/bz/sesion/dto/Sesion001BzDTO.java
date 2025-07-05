@@ -195,5 +195,4 @@ public class Sesion001BzDTO {
     public void setEliminado(final Catalogo estatus) {
         this.eliminado = estatus;
     }
-
 }

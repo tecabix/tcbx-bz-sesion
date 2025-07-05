@@ -73,14 +73,6 @@ public class Sesion001BZ {
      */
     private static final String NO_SE_ENCONTRO_EL_USUARIO;
 
-    static {
-
-        NO_SE_ENCONTRO_EL_USUARIO = "No se encontró el usuario.";
-        NO_SE_ENCONTRO_LA_LICENCIA = "No se encontró la licencia.";
-        PETICIONES_AGOTADAS = "Peticiones agotadas.";
-        MUCHOS_USUARIOS_CONECTADOS = "Muchos usuarios conectados.";
-    }
-
     /**
      * Mensaje licencia no encontrada.
      */
@@ -121,13 +113,22 @@ public class Sesion001BZ {
      */
     private static final int OCHO = 8;
 
+    static {
+
+        NO_SE_ENCONTRO_EL_USUARIO = "No se encontró el usuario.";
+        NO_SE_ENCONTRO_LA_LICENCIA = "No se encontró la licencia.";
+        PETICIONES_AGOTADAS = "Peticiones agotadas.";
+        MUCHOS_USUARIOS_CONECTADOS = "Muchos usuarios conectados.";
+    }
+
     /**
      * Constructor que inicializa los atributos de la clase {@code Sesion001BZ}
-     * utilizando los valores proporcionados por el
-     * objeto {@code Sesion001BzDTO}.
+     * utilizando los valores proporcionados por el objet
+     * {@code Sesion001BzDTO}.
      *
      * @param dto Objeto de transferencia de datos que contiene las dependencias
-     *            y configuraciones necesarias para inicializar la clase.
+     *                        y configuraciones necesarias para inicializar la
+     *            clase.
      */
     public Sesion001BZ(final Sesion001BzDTO dto) {
         this.usuarioRepository = dto.getUsuarioRepository();
@@ -135,7 +136,7 @@ public class Sesion001BZ {
         this.sesionRepository = dto.getSesionRepository();
         this.licenciaMulti = dto.getLicenciaMulti();
         this.licenciaMono = dto.getLicenciaMono();
-        this.licenciaMultiMono = dto.getLicenciaMono();
+        this.licenciaMultiMono = dto.getLicenciaMultiMono();
         this.activo = dto.getActivo();
         this.eliminado = dto.getEliminado();
     }
@@ -166,7 +167,9 @@ public class Sesion001BZ {
         LocalDateTime vencimiento = LocalDateTime.now();
         Long id = licencia.getId();
 
-        if (licencia.getServicio().getTipo().equals(licenciaMulti)) {
+        Catalogo tipoSvcLicencia = licencia.getServicio().getTipo();
+
+        if (tipoSvcLicencia.equals(licenciaMulti)) {
 
             Long usr = usuario.getId();
             LocalTime hora = LocalTime.of(HORA, MIN, MIN, MIN);
@@ -178,6 +181,7 @@ public class Sesion001BZ {
             sesionesDeHoy = page.getContent();
 
             if (sesionesDeHoy != null && !sesionesDeHoy.isEmpty()) {
+
                 restantes = sesionesDeHoy.get(0).getPeticionesRestantes();
                 if (restantes < 1) {
                     return rsb019.unauthorized(PETICIONES_AGOTADAS);
@@ -199,7 +203,7 @@ public class Sesion001BZ {
                     sesionRepository.save(sesion);
                 });
             }
-        } else if (licencia.getServicio().getTipo().equals(licenciaMono)) {
+        } else if (tipoSvcLicencia.equals(licenciaMono)) {
 
             LocalTime hora = LocalTime.of(HORA, MIN, MIN, MIN);
             vencimiento = LocalDateTime.of(vencimiento.toLocalDate(), hora);
@@ -228,7 +232,8 @@ public class Sesion001BZ {
                     sesionRepository.save(sesion);
                 });
             }
-        } else if (licencia.getServicio().getTipo().equals(licenciaMultiMono)) {
+
+        } else if (tipoSvcLicencia.equals(licenciaMultiMono)) {
             Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
             Page<Sesion> abiertas;
             abiertas = sesionRepository.findByLicenciaAndActive(id, pageable);
@@ -243,10 +248,12 @@ public class Sesion001BZ {
             Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
             Page<Sesion> sesionesDeHoy;
             sesionesDeHoy = sesionRepository.findByNow(id, pageable);
+
             if (sesionesDeHoy != null && !sesionesDeHoy.isEmpty()) {
 
                 Sesion sesiones = sesionesDeHoy.getContent().get(0);
                 restantes = sesiones.getPeticionesRestantes();
+
                 if (restantes < 1) {
                     return rsb019.unauthorized(PETICIONES_AGOTADAS);
                 }
@@ -265,6 +272,7 @@ public class Sesion001BZ {
                 });
             }
         }
+
         Sesion sesion = new Sesion();
         sesion.setUsuario(usuario);
         sesion.setEstatus(activo);
