@@ -41,8 +41,8 @@ public class Sesion004BZ {
      * Construye una nueva instancia de {@code Sesion004BZ} utilizando los datos
      * proporcionados en el objeto {@link Sesion004BzDTO}.
      *
-     * @param dto el objeto {@link Sesion004BzDTO} que contiene el repositorio
-     *            de sesión y el indicador de eliminado para inicializar esta
+     * @param dto objeto {@link Sesion004BzDTO} que contiene el repositorio de
+     *            sesión y el indicador de eliminado para inicializar esta
      *            instancia.
      */
     public Sesion004BZ(final Sesion004BzDTO dto) {

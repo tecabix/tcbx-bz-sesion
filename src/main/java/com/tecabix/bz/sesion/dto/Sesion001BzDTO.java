@@ -72,7 +72,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el repositorio de licencias.
      *
-     * @return el repositorio de licencias.
+     * @return repositorio de licencias.
      */
     public LicenciaRepository getLicenciaRepository() {
         return licenciaRepository;
@@ -81,7 +81,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el repositorio de licencias.
      *
-     * @param repository el repositorio de licencias a establecer.
+     * @param repository repositorio de licencias a establecer.
      */
     public void setLicenciaRepository(final LicenciaRepository repository) {
         this.licenciaRepository = repository;
@@ -90,7 +90,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el repositorio de sesiones.
      *
-     * @return el repositorio de sesiones.
+     * @return repositorio de sesiones.
      */
     public SesionRepository getSesionRepository() {
         return sesionRepository;
@@ -99,7 +99,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el repositorio de sesiones.
      *
-     * @param repository el repositorio de sesiones a establecer.
+     * @param repository repositorio de sesiones a establecer.
      */
     public void setSesionRepository(final SesionRepository repository) {
         this.sesionRepository = repository;
@@ -108,7 +108,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el catálogo de licencia multiusuario.
      *
-     * @return el catálogo de licencia multiusuario.
+     * @return catálogo de licencia multiusuario.
      */
     public Catalogo getLicenciaMulti() {
         return licenciaMulti;
@@ -117,7 +117,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el catálogo de licencia multiusuario.
      *
-     * @param licencia el catálogo de licencia multiusuario a establecer.
+     * @param licencia catálogo de licencia multiusuario a establecer.
      */
     public void setLicenciaMulti(final Catalogo licencia) {
         this.licenciaMulti = licencia;
@@ -126,7 +126,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el catálogo de licencia monousuario.
      *
-     * @return el catálogo de licencia monousuario.
+     * @return catálogo de licencia monousuario.
      */
     public Catalogo getLicenciaMono() {
         return licenciaMono;
@@ -135,7 +135,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el catálogo de licencia monousuario.
      *
-     * @param licencia el catálogo de licencia monousuario a establecer.
+     * @param licencia catálogo de licencia monousuario a establecer.
      */
     public void setLicenciaMono(final Catalogo licencia) {
         this.licenciaMono = licencia;
@@ -144,7 +144,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el catálogo de licencia multimonousuario.
      *
-     * @return el catálogo de licencia multimonousuario.
+     * @return catálogo de licencia multimonousuario.
      */
     public Catalogo getLicenciaMultiMono() {
         return licenciaMultiMono;
@@ -153,8 +153,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el catálogo de licencia multimonousuario.
      *
-     * @param licencia el catálogo de licencia multimonousuario
-     *        a establecer.
+     * @param licencia catálogo de licencia multimonousuario a establecer.
      */
     public void setLicenciaMultiMono(final Catalogo licencia) {
         this.licenciaMultiMono = licencia;
@@ -163,7 +162,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el estado "Activo" del catálogo.
      *
-     * @return el estado "Activo".
+     * @return estado "Activo".
      */
     public Catalogo getActivo() {
         return activo;
@@ -172,7 +171,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el estado "Activo" del catálogo.
      *
-     * @param estatus el estado "Activo" a establecer.
+     * @param estatus estado "Activo" a establecer.
      */
     public void setActivo(final Catalogo estatus) {
         this.activo = estatus;
@@ -181,7 +180,7 @@ public class Sesion001BzDTO {
     /**
      * Obtiene el estado "Eliminado" del catálogo.
      *
-     * @return el estado "Eliminado".
+     * @return estado "Eliminado".
      */
     public Catalogo getEliminado() {
         return eliminado;
@@ -190,7 +189,7 @@ public class Sesion001BzDTO {
     /**
      * Establece el estado "Eliminado" del catálogo.
      *
-     * @param estatus el estado "Eliminado" a establecer.
+     * @param estatus estado "Eliminado" a establecer.
      */
     public void setEliminado(final Catalogo estatus) {
         this.eliminado = estatus;

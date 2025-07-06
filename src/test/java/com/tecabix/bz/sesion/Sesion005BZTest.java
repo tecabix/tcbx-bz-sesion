@@ -54,8 +54,8 @@ public class Sesion005BZTest {
     }
 
     /**
-     * Verifica que el método validar retorne una respuesta OK
-     * cuando se proporciona una sesión válida en la solicitud.
+     * Verifica que el método validar retorne una respuesta OK cuando se
+     * proporciona una sesión válida en la solicitud.
      */
     @Test
     void validarDebeRetornarOkConSesion() {

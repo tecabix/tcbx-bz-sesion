@@ -36,8 +36,8 @@ public class Sesion002BZ {
      * Constructor que inicializa la clase {@code Sesion002BZ} con el
      * repositoriode sesiones.
      *
-     * @param repository Repositorio utilizado para acceder a l
-     *                         entidad {@code Sesion}.
+     * @param repository Repositorio utilizado para acceder a la entidad
+     *                   {@code Sesion}.
      */
     public Sesion002BZ(final SesionRepository repository) {
         this.sesionRepository = repository;
@@ -46,7 +46,7 @@ public class Sesion002BZ {
     /**
      * Método para crear una nueva sesión de usuario.
      *
-     * @param rqsv026 datos de búsqueda
+     * @param rqsv026 datos de búsqueda.
      * @return {@link ResponseEntity} con un objeto {@link RSB019} que contiene
      *         información para consultar la sesión del usuario.
      */
@@ -74,14 +74,14 @@ public class Sesion002BZ {
         Page<Sesion> servicio;
         servicio = sesionRepository.findByActiveAndLikeServicio(txt, pageable);
         switch (tipo) {
-        case "USUARIO":
-            return rsb018.ok(usuario);
-        case "LICENCIA":
-            return rsb018.ok(licencia);
-        case "SERVICIO":
-            return rsb018.ok(servicio);
-        default:
-            return rsb018.badRequest(EL_TIPO_DE_FILTRO_NO_ES_VALIDO);
+            case "USUARIO":
+                return rsb018.ok(usuario);
+            case "LICENCIA":
+                return rsb018.ok(licencia);
+            case "SERVICIO":
+                return rsb018.ok(servicio);
+            default:
+                return rsb018.badRequest(EL_TIPO_DE_FILTRO_NO_ES_VALIDO);
         }
     }
 }

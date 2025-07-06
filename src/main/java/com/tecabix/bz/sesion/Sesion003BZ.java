@@ -31,8 +31,8 @@ public class Sesion003BZ {
      * Construye una nueva instancia de {@code Sesion003BZ} utilizando los datos
      * proporcionados en el objeto {@link Sesion003BzDTO}.
      *
-     * @param dto el objeto {@link Sesion003BzDTO} que contiene el repositorio
-     *            de sesión y el indicador de eliminado para inicializar esta
+     * @param dto objeto {@link Sesion003BzDTO} que contiene el repositorio de
+     *            sesión y el indicador de eliminado para inicializar esta
      *            instancia.
      */
     public Sesion003BZ(final Sesion003BzDTO dto) {
@@ -43,7 +43,7 @@ public class Sesion003BZ {
     /**
      * Método para eliminar una sesión de usuario.
      *
-     * @param rqsv027 datos de eliminación
+     * @param rqsv027 datos de eliminación.
      * @return {@link ResponseEntity} con un objeto {@link RSB020} que contiene
      *         información para eliminar la sesión del usuario.
      */

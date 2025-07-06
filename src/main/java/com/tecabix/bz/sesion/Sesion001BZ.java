@@ -123,12 +123,10 @@ public class Sesion001BZ {
 
     /**
      * Constructor que inicializa los atributos de la clase {@code Sesion001BZ}
-     * utilizando los valores proporcionados por el objet
-     * {@code Sesion001BzDTO}.
+     * utilizando los valores proporcionados por {@code Sesion001BzDTO}.
      *
      * @param dto Objeto de transferencia de datos que contiene las dependencias
-     *                        y configuraciones necesarias para inicializar la
-     *            clase.
+     *            y configuraciones necesarias para inicializar la clase.
      */
     public Sesion001BZ(final Sesion001BzDTO dto) {
         this.usuarioRepository = dto.getUsuarioRepository();
@@ -144,7 +142,7 @@ public class Sesion001BZ {
     /**
      * Método para crear una nueva sesión de usuario.
      *
-     * @param rqsv025 datos de creación
+     * @param rqsv025 datos de creación.
      * @return {@link ResponseEntity} con un objeto {@link RSB019} que contiene
      *         información para crear la sesión del usuario.
      */
@@ -174,10 +172,10 @@ public class Sesion001BZ {
             Long usr = usuario.getId();
             LocalTime hora = LocalTime.of(HORA, MIN, MIN, MIN);
             vencimiento = LocalDateTime.of(vencimiento.toLocalDate(), hora);
-            Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE);
+            Pageable pageReq = PageRequest.of(0, Integer.MAX_VALUE);
             List<Sesion> sesionesDeHoy;
             Page<Sesion> page;
-            page = sesionRepository.findByUsuarioAndNow(id, usr, pageable);
+            page = sesionRepository.findByUsuarioAndNow(id, usr, pageReq);
             sesionesDeHoy = page.getContent();
 
             if (sesionesDeHoy != null && !sesionesDeHoy.isEmpty()) {
@@ -192,9 +190,9 @@ public class Sesion001BZ {
             }
 
             List<Sesion> sesionesAbiertas;
-            Page<Sesion> pageS;
-            pageS = sesionRepository.findByUsuarioAndActive(id, usr, pageable);
-            sesionesAbiertas = pageS.getContent();
+            Page<Sesion> activas;
+            activas = sesionRepository.findByUsuarioAndActive(id, usr, pageReq);
+            sesionesAbiertas = activas.getContent();
             if (sesionesAbiertas != null) {
                 sesionesAbiertas.stream().forEach(sesion -> {
                     sesion.setFechaDeModificacion(LocalDateTime.now());
